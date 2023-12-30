@@ -31,15 +31,17 @@ public class Login extends BaseClass {
 		}
 		
 		driver = openBrowser(hMap.get("Browser"));
-	    driver.get(prop.getProperty("url"));
+		driver.get("https://studentpanel2.testpedia.in/");
+//	    driver.get(prop.getProperty(url));
 	    LoginPage loginPage = new LoginPage(driver);
 	    loginPage.enterUsername(hMap.get("Username"));
 	    loginPage.enterPassword(hMap.get("Password"));
 	    loginPage.loginClick();
 	 
-//	 driver.findElement(By.id("UserName")).sendKeys(hMap.get("Username"));
-//	 driver.findElement(By.id("Password")).sendKeys(hMap.get("Password"));
-//	 driver.findElement(By.name("LoginButton")).click();
+		
+    /* driver.findElement(By.id("UserName")).sendKeys(hMap.get("Username"));
+     driver.findElement(By.id("Password")).sendKeys(hMap.get("Password"));
+     driver.findElement(By.name("LoginButton")).click();*/
 	 
 	 String expectedResult = hMap.get("ExpectedResult");
 	 
@@ -67,7 +69,7 @@ try {
 	public Object[][] dataProvider() {
 		Object[][] data = null;
 		try {
-		 excelReader = new MyXLSReader("D:\\KeyGenProject\\EOA_DataDrivenFramework\\src\\test\\resources\\TestExcel.xlsx");
+		 excelReader = new MyXLSReader("src\\test\\resources\\TestExcel.xlsx");
 		data  = DataUtil.getTestData(excelReader,"LoginTest","Data");
 		}catch(Throwable e) {
 			e.printStackTrace();
